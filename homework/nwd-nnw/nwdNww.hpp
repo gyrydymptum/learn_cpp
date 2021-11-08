@@ -18,6 +18,6 @@ if (lhs==0) return 0;
     else {
         int NWWresult= lhs*rhs/NWD(lhs,rhs);
         if (NWWresult<0) return -NWWresult;
-        else return NWWresult;
+        return NWWresult;
     }
 }
