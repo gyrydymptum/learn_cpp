@@ -1,19 +1,21 @@
 
-class ICommand {
+class Command {
     public:
-    void Execute();
+    virtual ~Command(){}
+    virtual void execute() = 0;
+    virtual void undo() = 0;
 
 };
 
-class SaveGameCommand : ICommand {
+class SaveGameCommand : Command {
     public:
-     void Execute(){
+     void execute(){
         //impementation
     }
 };
 
 main() {
-ICommand command = new SaveGameCommand();
-command.Execute();
+Command command = new SaveGameCommand();
+command.execute();
 return 0;
 }
