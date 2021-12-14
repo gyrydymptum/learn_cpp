@@ -4,6 +4,7 @@
 
 template <typename Key, typename Value>
 class VectorMap {
+    static_assert(std::is_default_constructible<Value>::value, "No a default C-tor ");
     std::vector<Key> keys{};
     std::vector<Value> values{};
 
@@ -34,7 +35,12 @@ public:
     }
 };
 
+class WithoutDefaultCtor {
+    WithoutDefaultCtor() = default;
+};
+
 int main() {
+    VectorMap<int, WithoutDefaultCtor> mapWithAssert;
     VectorMap<int, char> map;
     map.insert(1, 'e');
     map[1] = 'e';         // replaces value under 1
