@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <type_traits>
 #include <vector>
 
 template <typename Key, typename Value>
@@ -33,6 +34,13 @@ public:
         }
         throw std::out_of_range{"not in map"};
     }
+
+    bool isIntKey() const {
+        if (std::is_same<Key, int>::value) {
+            return true;
+        }
+        return false;
+    }
 };
 
 class WithoutDefaultCtor {
@@ -40,15 +48,18 @@ class WithoutDefaultCtor {
 };
 
 int main() {
-    VectorMap<int, WithoutDefaultCtor> mapWithAssert;
-    VectorMap<int, char> map;
-    map.insert(1, 'e');
-    map[1] = 'e';         // replaces value under 1
-    std::cout << map[1];  // prints 'e'
-                          // map.at(2);              // throw std::out_of_range
-    map[2] = 'd';         // replaces value under 1
-    std::cout << map[1];
-    map.at(2);
-    map.at(3);
+    // VectorMap<int, WithoutDefaultCtor> mapWithAssert;
+    VectorMap<int, char> map1;
+    std::cout << std::boolalpha << map1.isIntKey() << '\n';
+     VectorMap<unsigned, char> map2;
+    std::cout << std::boolalpha << map2.isIntKey() << '\n';
+    map1.insert(1, 'e');
+    map1[1] = 'e';        
+    std::cout << map1[1];
+    map1[2] = 'd';         
+    std::cout << map1[1];
+    // map.at(2);
+    // map.at(3);
+    std::cout << '\n';
     return 0;
 }
