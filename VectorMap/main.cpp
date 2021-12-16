@@ -38,6 +38,8 @@ public:
     bool isIntKey() const {
         return std::is_same<Key, int>::value;
     }
+
+    static constexpr bool is_int_key = std::is_same<Key, int>::value;
 };
 
 class WithoutDefaultCtor {
@@ -48,8 +50,10 @@ int main() {
     // VectorMap<int, WithoutDefaultCtor> mapWithAssert;
     VectorMap<int, char> map1;
     std::cout << std::boolalpha << map1.isIntKey() << '\n';
+    std::cout << std::boolalpha << map1.is_int_key << '\n';
     VectorMap<unsigned, char> map2;
     std::cout << std::boolalpha << map2.isIntKey() << '\n';
+    std::cout << std::boolalpha << map2.is_int_key << '\n';
     map1.insert(1, 'e');
     map1[1] = 'e';
     std::cout << map1[1];
