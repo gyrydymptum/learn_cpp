@@ -21,5 +21,17 @@ int main() {
         std::cout << "In binary:  " << std::bitset<8>{el} << '\n';
     });
 
+std::cout << "test:  " <<'\n';
+std::array<uint8_t, number_of_registers> test1{0x62, 0xA7, 0x10};
+std::array<uint8_t, number_of_registers> test2{0x76, 0x62, 0x21};
+std::array<uint8_t, number_of_registers> test3{0x3B, 0xB1, 0x22};
+std::array<uint8_t, number_of_registers> test4{0xC4, 0x4E, 0x23};
+
+if(freq(433000000) ==  test1){std::cout << "ok " << '\n';};
+if(freq(868000000) ==  test2){std::cout << "ok " << '\n';};
+if(freq(902000000) ==  test3){std::cout << "ok " << '\n';};
+if(freq(918000000) ==  test4){std::cout << "ok " << '\n';};
+if(freq(918000000) ==  test1){std::cout << "no " << '\n';};
+
 return 0;
 }
