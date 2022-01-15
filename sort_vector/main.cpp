@@ -29,7 +29,11 @@ int main() {
     print(vec);
     sortVec(vec);
     print(vec);
-    print(sortVec(vec));
-
+    std::vector<int> v2{3, 7, 8, 2, 19, 15, 11, 4};
+    print(v2);
+    std::sort(v2.begin(), v2.end());
+    print(v2);
+    std::stable_partition(v2.begin(), v2.end(), [](int x) { return x % 2 == 0; });
+    print(v2);
     return 0;
 }
