@@ -2,8 +2,9 @@
 #include "fibonacci.hpp"
 
 int main() {
-    std::cout << fibonacci_iterative(10) << "\n";
-    std::cout << fibonacci_recursive(10) << "\n";
+    // std::cout << fibonacci_iterative(45) << "\n";
+  int result = fibonacci_recursive(25);
+    std::cout << result << "\n";
 
     return 0;
 }
