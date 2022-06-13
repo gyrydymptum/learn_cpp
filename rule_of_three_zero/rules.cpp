@@ -8,6 +8,7 @@ public:
     RuleOf5(RuleOf5 const& other) : ptr_(new Type{*other.ptr_}) {}  //copy constructor deep copy to avoid double ptr
     RuleOf5& operator=(RuleOf5 const& other) {                      //assignment operator
         if (&other != this) {                                       //secured self assignment
+            delete ptr_;
             ptr_ = new Type(*other.ptr_);
         }
         return *this;
